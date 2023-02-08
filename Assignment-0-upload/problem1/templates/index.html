@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <title>Ass-0 | Problem 1</title>
+  </head>
+  <body>
+    <h1>Addition/Subtraction Page</h1>
+    <h3>{{ today }}</h3>
+
+    <div class="inptFields">
+      <input
+        type="number"
+        id="num1"
+        class="form"
+        placeholder="Enter the 1st number"
+      />
+      <input
+        type="number"
+        id="num2"
+        class="form"
+        placeholder="Enter the 2nd number"
+      />
+    </div>
+
+    <div class="btnAlign">
+      <button id="add" class="button-33">Add (+)</button>
+      <button id="subtract" class="button-33 button-33-red">Subtract (-)</button>
+    </div>
+
+    <span id="res"> </span>
+  </body>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Ass-0 | Prrob2 | {{ std.roll }}{% endblock %}
+
+{% block body %}
+<hr>
+<h1 class="text-center p-3 mt-3 mb-0">Details for Roll : {{ std.roll }}</h1>
+<hr>
+    <div class="justify-content-center single-div">
+    <div class="card m-4 border-success" style="width: 18rem;">
+        <p class="text-center mt-3 mb-0">
+            <img src="{{ url_for('static', filename='assets/boy.png') }}" class="card-img-top" style="width: 7rem;" alt="User">
+        </p>
+        <hr>
+        <div class="card-body">
+            <h5 class="card-title text-center text-success">Name : {{ std.name }}</h5>
+            <p class="card-text text-center">
+            <ul>
+                <li>Roll : {{ std.roll }}</li>
+                <li>Dept : {{ dept[std.dept_code] }}</li>
+                <li>Address : {{ std.addr }}</li>
+                <li>Phone : {{ std.phone }}</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+    </div>
+<hr>
+<p class="text-center m-5">
+    <a type="button" class="btn btn-lg btn-danger" href="/">Go Back</a>
+</p>
+<hr>
+{% endblock %}

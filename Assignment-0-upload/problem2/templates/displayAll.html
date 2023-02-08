@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Ass-0 | Prrob2 | Display All{% endblock %}
+
+{% block body %}
+<hr>
+<h1 class="text-center p-3 mt-3 mb-0">All Students</h1>
+<div class="conatiner text-center">
+  <a href="/add" class="btn btn-warning">Add New</a>
+</div>
+<hr>
+<hr>
+{% if status != 0 %}
+    {% if status == 1 %}
+    <div class="alert alert-success alert-dismissible fade show m-5 mb-0 mt-0" role="alert">
+        <strong>Success!</strong> The action was completed successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% else %}
+    <div class="alert alert-danger alert-dismissible fade show m-5 mb-0 mt-0" role="alert">
+        <strong>Failed!</strong> {{ err_msg }}.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endif %}
+{% endif %}
+<div class="row row-cols-1 row-cols-md-5 g-4 m-3">
+    {% for i in range(0, _len) %}
+    <div class="col">
+    <div class="card border-secondary" style="width: 15rem;">
+        <p class="text-center mt-3 mb-0">
+            <img src="{{ url_for('static', filename='assets/boy.png') }}" class="card-img-top" style="width: 7rem;" alt="User">
+        </p>
+        <hr>
+        <div class="card-body">
+            <h5 class="card-title text-center">Name : {{ stds[i].name }}</h5>
+            <p class="card-text text-center">
+            <ul>
+                <li>Roll : {{ stds[i].roll }}</li>
+                <li>Dept : {{ dept[stds[i].dept_code] }}</li>
+                <li>Address : {{ stds[i].addr }}</li>
+                <li>Phone : {{ stds[i].phone }}</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="row text-center">
+  <div class="col-md-6 text-end">
+    {% if disPrev %}
+      <button class="btn btn-secondary">Previous</button>
+    {% else %}
+      <a class="btn btn-success" href="/previous">Previous</a>
+    {% endif %}
+  </div>
+  <div class="col-md-6 text-start">
+    {% if disNxt %}
+      <button class="btn btn-secondary">Next</button>
+    {% else %}
+      <a class="btn btn-success" href="/next">Next</a>
+    {% endif %}
+  </div>
+</div>
+<hr>
+<div class="m-5 p-5 pt-0 pb-0 mt-0">
+    <h4 class="text-center mb-4">Enter the roll of the student</h4>
+  <form class="input-group mb-3" action="/operations" method="post" onsubmit="return submitResult();">
+    <input type="number" class="form-control" aria-label="Text input with dropdown button" placeholder="69" name="roll_num" required>
+    <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a class="dropdown-item" href="#"><input type="submit" name="action" value="Update" class="btn btn-success"></a></li>
+      <li><a class="dropdown-item" href="#"><input type="submit" name="action" value="Delete" class="btn btn-danger"></a></li>
+      <li><a class="dropdown-item" href="#"><input type="submit" name="action" value="Search" class="btn btn-info"></a></li>
+      <!-- <li><a class="dropdown-item" href="#"><a class="btn btn-warning" href="/add">Add New</a></a></li> -->
+    </ul>
+  </form>
+</div>
+  <hr>
+  <hr>
+{% endblock %}

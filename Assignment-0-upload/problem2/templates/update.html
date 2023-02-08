@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Ass-0 | Prrob2 | Update{% endblock %}
+
+{% block body %}
+<h1 class="text-center m-4">Update Student</h1>
+<hr>
+<div class="p-5 m-5 mt-0">
+<form class="row g-3" action="/update" method="post">
+    <div class="col-md-6 input-group-lg">
+      <label for="Name" class="form-label dt">Enter Name</label>
+      <input type="text" class="form-control" id="Name" value="{{ std.name }}" name="name" required>
+    </div>
+    <div class="col-md-6 input-group-lg">
+      <label for="Roll" class="form-label">Roll (fixed)</label>
+      <input type="number" class="form-control fixedInput text-danger" id="Roll" name="roll" value="{{ std.roll }}" required>
+    </div>
+    <div class="col-12 input-group-lg">
+      <label for="inputAddress" class="form-label">Address</label>
+      <input type="text" class="form-control" id="inputAddress" name="addr" value="{{ std.addr }}" required>
+    </div>
+    <div class="col-12 input-group-lg">
+      <label for="Phone" class="form-label">Contact</label>
+      <input type="tel" class="form-control" id="Phone" name="phone" value="{{ std.phone }}" required>
+    </div>
+    <div class="col-md-12 input-group-lg">
+      <label for="inputState" class="form-label">Department</label>
+      <select id="inputState" class="form-select" name="dept">
+        <option selected>{{ allDepts[std.dept_code] }}</option>
+        {% for dept in depts %}
+            <option>{{ dept }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-2">
+      <button type="submit" class="btn btn-success btn-lg">Update Details</button>
+    </div>
+    <div class="col-10">
+        <a type="button" class="btn btn-danger btn-lg" href="/">Cancel</a>
+      </div>
+  </form>
+</div>
+{% endblock %}
